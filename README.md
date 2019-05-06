@@ -6,6 +6,10 @@ Welcome to part one of the tutorial. If you don't know what Gatsby themes are, o
 
 This tutorial is aimed for developers who either want to create themes to release to other users, or want to create themes that they could use across a number of their own projects.
 
+You can view the final code for this part of the tutorial on my github page here:
+
+[Gatsby Theme - Part One](https://github.com/billyjacoby/gabsty-theme-tutorial/tree/part-one)
+
 That being said, here are a few things that we will have to tackle in this part of the tutorial to get our dev environment for building themes up and running:
 
 - Initialize an 'umbrella' NPM package to contain both our theme package, as well as our development site
@@ -246,6 +250,10 @@ Now if you're anything like me, you're probably thinking something along the lin
 The magic of Gatsby themes is that we can create all of our boilerplate pages and styles inside of our theme package, and any gatsby build that will be using this theme will have access to those files!
 
 Furthermore, if we need to update a component or some styles we can do so in our theme then push the update to NPM and any other project using that theme simply has to update our theme package in order to see those updates!
+
+If something isn't working as you would expect, remember that you can view all of the source code on the part-one branch on my Github repo for this project which can be found [here.](https://github.com/billyjacoby/gabsty-theme-tutorial/tree/part-one)
+
+If you get stumped feel free to comment on this post, or message me on twitter!
 
 ### What's next
 
