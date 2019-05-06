@@ -149,7 +149,6 @@ Next we need to add our theme package, and our gatsby scripts to our site's pack
     "gatsby-theme-tutorial": "*"
   }
 }
-
 ```
 
 The last thing we should need to do here is add our Gatsby and React dependencies to our site workspace.
