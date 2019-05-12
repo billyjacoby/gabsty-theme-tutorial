@@ -1,0 +1,19 @@
+.header {
+  margin: -8px;
+  padding: 1.5rem;
+  width: 100%;
+  align-self: center;
+  text-align: center;
+  background-color: purple;
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: solid black;
+}
+
+.site-heading {
+  font-size: 3rem;
+}
+
+.no-style {
+  color: inherit;
+  text-decoration: inherit;
+}
