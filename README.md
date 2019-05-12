@@ -260,3 +260,5 @@ If you get stumped feel free to comment on this post, or message me on twitter!
 In part two of this tutorial we will begin diving into how we can style the layout component of our theme, and see all of those changes propagate to our development site that is using our theme.
 
 It's going to get very interesting from here on out, so stay tuned and tweet at me or leave a comment if you get hung up on anything or have any questions!
+
+**_You can view [part two of the tutorial here](https://billyjacoby.dev/building-a-gatsbyjs-theme-part-two)_**
