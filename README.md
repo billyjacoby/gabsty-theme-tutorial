@@ -25,7 +25,7 @@ Layout components in Gatsby take in a `{children}` object, build their layout ar
 
 **_All of styles are only to show how this works, we will clean all of these up in a later tutorial_**
 
-#### /packages/gatsby-theme-tutorial/src/styles/layout.css
+**`/packages/gatsby-theme-tutorial/src/styles/layout.css`**
 
 ```CSS
 .container {
@@ -44,7 +44,7 @@ main {
 }
 ```
 
-### /packages/gatsby-theme-tutorial/src/components/layout.js
+**`/packages/gatsby-theme-tutorial/src/components/layout.js`**
 
 ```JAVASCRIPT
 import React from "react";
@@ -63,7 +63,7 @@ export default Layout;
 
 Now the main difference in using a layout component in a normal Gatsby project, and a theme is that we want to make this layout available for all of the pages that may be built and not just the pages that come with our theme. To demonstrate this idea let's start by importing this layout file into our index.js file in our theme directory.
 
-### /packages/gatsby-theme-tutorial/src/pages/index.js
+**`/packages/gatsby-theme-tutorial/src/pages/index.js`**
 
 ```JAVASCRIPT
 import React from "react";
@@ -79,7 +79,7 @@ export default () => (
 
 Now lets add an About page to our site directory.
 
-### /site/src/pages/about.js
+**`/site/src/pages/about.js`**
 
 ```JAVASCRIPT
 import React from "react";
@@ -111,7 +111,7 @@ What we can do instead is wrap the root element of every page that gets rendered
 
 Go ahead and revert your `index.js` back to just an H1 tag.
 
-#### /packages/gatsby-theme-tutorial/src/pages/index.js
+**`/packages/gatsby-theme-tutorial/src/pages/index.js`**
 
 ```JAVASCRIPT
 import React from "react";
@@ -130,11 +130,11 @@ Though it seems a little repetitive we will need to place the same code in both 
 
 So both our `gatsby-browser.js` and `gatsby-ssr.js` files should contain the following code:
 
-#### /packages/gatsby-theme-tutorial/gatsby-browser.js
+**`/packages/gatsby-theme-tutorial/gatsby-browser.js`**
 
 And
 
-#### /packages/gatsby-theme-tutorial/gatsby-ssr.js
+**`/packages/gatsby-theme-tutorial/gatsby-ssr.js`**
 
 ```JAVASCRIPT
 import React from "react";
@@ -158,7 +158,7 @@ Lets create a simple site header that displays the site name and a link to the h
 
 TO do this lets add some site information to the `gatsby-config.js` for our theme.
 
-#### `/packages/gatsby-theme-tutorial/gatsby-config.js`
+**`/packages/gatsby-theme-tutorial/gatsby-config.js`**
 
 ```JAVASCRIPT
 module.exports = {
@@ -179,7 +179,7 @@ module.exports = {
 
 Now in our Header component we need to query for our site title. We'll do this using the `useStaticQuery` hook that Gatsby provides. We can then take that info and use it in our component.
 
-#### `/packages/gatsby-theme-tutorial/src/components/header.js`
+**`/packages/gatsby-theme-tutorial/src/components/header.js`**
 
 ```JAVASCRIPT
 import React from "react";
@@ -212,7 +212,7 @@ const Header = () => {
 export default Header;
 ```
 
-#### /packages/gatsby-theme-tutorial/src/styles/header.css
+**`/packages/gatsby-theme-tutorial/src/styles/header.css`**
 
 ```CSS
 .header {
@@ -238,7 +238,7 @@ export default Header;
 
 This is great! Noe we can access our site metadata from our `gatbsy-config.js` file in our header component. The real magic happens when we add and change this file in our site folder.
 
-#### /site/gatsby-config.js
+**`/site/gatsby-config.js`**
 
 ```JAVASCRIPT
 module.exports = {
@@ -258,7 +258,7 @@ Now lets add our Header to our Layout component.
 
 All we have to do is import our `header.js` file into our `layout.js` component and place it accordingly.
 
-#### `/packages/gatsby-theme-tutorial/components/layout.js
+**`/packages/gatsby-theme-tutorial/components/layout.js`**
 
 ```JAVASCRIPT
 import React from "react";
