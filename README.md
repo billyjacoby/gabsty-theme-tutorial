@@ -236,7 +236,7 @@ export default Header;
 }
 ```
 
-This is great! Noe we can access our site metadata from our `gatbsy-config.js` file in our header component. The real magic happens when we add and change this file in our site folder.
+This is great! Now we can access our site metadata from our `gatbsy-config.js` file in our header component. The real magic happens when we add and change this file in our site folder.
 
 **`/site/gatsby-config.js`**
 
