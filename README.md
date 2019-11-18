@@ -4,5 +4,5 @@ This is a multipart tutorial for building your own Gatsby theme from scratch. Ex
 
 - [Introduction](https://billyjacoby.dev/intro-to-gatsby-themes)
 - [Part One](https://billyjacoby.dev/building-a-gatsbyjs-theme-part-one)
-- [Part Two] - Coming Soon
+- [Part Two](https://billyjacoby.dev/building-a-gatsbyjs-theme-part-two)
 - [Part Three] - Coming Soon
