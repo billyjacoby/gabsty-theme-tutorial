@@ -1,0 +1,14 @@
+.container {
+  margin: -8px;
+  padding: 8px;
+  background-color: tomato;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 100%;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
