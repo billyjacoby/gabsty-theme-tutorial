@@ -3,5 +3,5 @@ module.exports = {
     title: `New Gatsby Site`,
     description: `A website using our Gatsby theme!`
   },
-  __experimentalThemes: ["gatsby-theme-tutorial"]
+  plugins: [{ resolve: "gatsby-theme-style", options: {} }]
 };
