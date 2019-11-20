@@ -1,28 +1,31 @@
-# Building a GatsbyJS Theme - Part Three
+# Building a GatsbyJS Theme - Introduction
 
-## Designing and configuring our Layout
+If you've been following GatsbyJS, than I'm sure you've already heard about the introduction of Gatsby themes.
 
-This is part three in a multi-part tutorial series on building your own Gatsby theme from scratch.
+## Why We Need Themes
 
-Please checkout the [Introduction](https://billyjacoby.dev/intro-to-gatsby-themes), [Part One](https://billyjacoby.dev/building-a-gatsbyjs-theme-part-one), and [Part Two](https://billyjacoby.dev/building-a-gatsbyjs-theme-part-two) of this series if you haven't yet, as we will be picking up right where we left off at the end of part two.
+I've been building tons of sites in Gatsby lately, for both my own projects and clients. Until recently I've been using my own starter that I built to scaffold out a basic design for similar websites. This works fine, until I decide that I want to make a minor change to functionality or design across all of the sites built off of this starter.
 
-The finished code for this portion of the tutorial can be found on my github repo [here.](https://github.com/billyjacoby/gabsty-theme-tutorial/tree/part-three)
+Currently the way to do this is to make these changes, then push the same changes to all of my other sites. While this isn't the end of the world, there certainly has to be a better way to do this.
 
-Here's what we'll be tackling in this part of the tutorial:
+## Themes to the Rescue
 
-- Style our current theme to look like a blog
-- Initialize a new Gatsby theme
-- Demonstrate how to use multiple Gatsby Themes in a single website
-- Utilize component shadowing to override components from our theme
+Gatsby themes claim to make this entire process easier by enabling a single update to a theme, that will be pushed to all sites built using that theme.
 
-Considering that it's been a while since I've been working on this theme lets begin by running a simple `yarn upgrade` and seeing if we break anything.
+You can read more about themes directly on the GatsbyJS.org website here
 
-Luckily (as of writing this at least) everything still works. So lets get to it then!
+Disclaimer: I have no experience with Gatsby themes yet.
 
-## Styling our current theme
+I figured having no experience with themes, that this would be a great opportunity to document my path for learning about Gatsby themes, and how to build one from the ground up.
 
-## Initialize a new Gatsby theme
+## What's to Come
 
-## Use both themes in our site
+I will be posting my continued attempts and (hopefully) progress building a Gatsby theme.
 
-## Shadow the about page that came from the Blog theme
+I will link to the next parts in the tutorial as I write them for you to follow along.
+
+Feel free to reach out via the comments, twitter, or email with any questions or requests that you might have for this tutorial!
+
+_You can view part one of the tutorial [here](https://billyjacoby.dev/building-a-gatsbyjs-theme-part-one)_
+
+This tutorial will be posted on both dev.to as well as my own blog, so feel free to checkout both!
