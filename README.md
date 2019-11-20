@@ -262,3 +262,111 @@ Now when we go to our home page we see the navbar with a link to the home page. 
 We have more than just the home page in our site's pages directory, but how do we tell our theme to add those to the navbar? One way to do this is to update the options object with all of our page info.
 
 ### Pass options in to our theme
+
+Lets add a `navigationPages` object to our options object that will be passed in to our theme.
+
+### site/gatsby-config.js
+
+```
+...
+  plugins: [
+    {
+      resolve: "gatsby-theme-style",
+      options: {
+        wrapRootElement: true,
+        // NEW OBJECT
+        navigationPages: [
+          {
+            name: "About",
+            title: "About Us Page",
+            path: "/about"
+          }
+        ]
+      }
+    }
+  ]
+...
+```
+
+Now in our theme, lets make this object accessible to our siteMetadata object.
+
+### packages/gatsby-theme-style/gatsby-config.js
+
+```
+module.exports = themeOptions => ({
+  siteMetadata: {
+    title: `Gatsby Theme Tutorial`,
+    description: `A tutorial for building a GatsbyJS theme from scratch!`,
+    // NEW
+    navigationPages: themeOptions.navigationPages
+      ? [...themeOptions.navigationPages]
+      : "null"
+  },
+  plugins: [
+    {
+      resolve: `gatsby-plugin-page-creator`,
+      options: {
+        path: `${__dirname}/src/pages`
+      }
+    }
+  ]
+});
+```
+
+I'm not sure if there is a better way, but in order to allow the graphql query to fail silently we need to use a ternary operator here in order to check if this option was passed into our theme. This way if a user does not pass additional pages in to our theme package we can still query the rest of the siteMetadata without getting an error from graphql.
+
+Lets update the static query in our header component, and then pass that data down to our navbar component.
+
+### packages/gatsby-theme-style/src/components/header.js
+
+```
+...
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+          description
+          navigationPages {
+            name
+            title
+            path
+          }
+        }
+      }
+    }
+  `);
+
+  return (
+    <div className="header">
+      <Link to="/" className="no-style">
+        <h1 className="site-heading">{data.site.siteMetadata.title}</h1>
+        <h4>{data.site.siteMetadata.description}</h4>
+      </Link>
+      <Navbar navigationPages={data.site.siteMetadata.navigationPages} />
+    </div>
+  );
+};
+...
+```
+
+And finally lets access this new data in our navbar component and add the page to our navbar!
+
+### packages/gatsby-theme-style/components/navbar.js
+
+```
+...
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        {navigationPages.map((item, index) => (
+          <li key={index}>
+            <Link to={item.path}>{item.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+...
+```

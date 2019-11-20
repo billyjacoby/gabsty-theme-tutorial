@@ -3,13 +3,18 @@ import { Link } from "gatsby";
 
 import "../styles/navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ navigationPages }) => {
   return (
     <nav>
       <ul>
         <li>
           <Link to="/">Home</Link>
         </li>
+        {navigationPages.map((item, index) => (
+          <li key={index}>
+            <Link to={item.path}>{item.name}</Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );

@@ -11,6 +11,11 @@ const Header = () => {
         siteMetadata {
           title
           description
+          navigationPages {
+            name
+            title
+            path
+          }
         }
       }
     }
@@ -22,7 +27,7 @@ const Header = () => {
         <h1 className="site-heading">{data.site.siteMetadata.title}</h1>
         <h4>{data.site.siteMetadata.description}</h4>
       </Link>
-      <Navbar />
+      <Navbar navigationPages={data.site.siteMetadata.navigationPages} />
     </div>
   );
 };
