@@ -1,5 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
+import Navbar from "./navbar";
 
 import "../styles/header.css";
 
@@ -21,6 +22,7 @@ const Header = () => {
         <h1 className="site-heading">{data.site.siteMetadata.title}</h1>
         <h4>{data.site.siteMetadata.description}</h4>
       </Link>
+      <Navbar />
     </div>
   );
 };

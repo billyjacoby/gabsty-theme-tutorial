@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = themeOptions => ({
   siteMetadata: {
     title: `Gatsby Theme Tutorial`,
     description: `A tutorial for building a GatsbyJS theme from scratch!`
@@ -11,4 +11,4 @@ module.exports = {
       }
     }
   ]
-};
+});

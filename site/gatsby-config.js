@@ -7,7 +7,7 @@ module.exports = {
     {
       resolve: "gatsby-theme-style",
       options: {
-        // blank for now, but we;ll be coming back to this
+        wrapRootElement: true
       }
     }
   ]

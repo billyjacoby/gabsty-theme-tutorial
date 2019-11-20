@@ -1,7 +1,6 @@
 .header {
   margin: -8px;
-  padding: 1.5rem;
-  width: 100%;
+  padding: 1.5rem 0 0 0;
   align-self: center;
   text-align: center;
   background-color: purple;
