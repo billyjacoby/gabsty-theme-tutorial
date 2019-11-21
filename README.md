@@ -57,7 +57,7 @@ After everything has been updated, lets import our theme as a plugin rather than
 
 ### site/gatsby-config.js
 
-```
+```js
 module.exports = {
   siteMetadata: {
     title: `New Gatsby Site`,
@@ -66,13 +66,12 @@ module.exports = {
   plugins: [
     {
       resolve: "gatsby-theme-style",
-    options: {
-      // blank for now, but we;ll be coming back to this
+      options: {
+        // blank for now, but we;ll be coming back to this
+      }
     }
-  }
   ]
 };
-
 ```
 
 Now if we run `yarn workspace site develop` you should see that our site works the exact same way that it did at the end of our last tutorial. Now about that empty options object...
@@ -83,7 +82,7 @@ We can pass any number of options to our theme using the options object from the
 
 ### site/gatsby-config.js
 
-```
+```js
 module.exports = {
   siteMetadata: {
     title: `New Gatsby Site`,
@@ -92,20 +91,19 @@ module.exports = {
   plugins: [
     {
       resolve: "gatsby-theme-style",
-    options: {
-      wrapRootElement: false
+      options: {
+        wrapRootElement: false
+      }
     }
-  }
   ]
 };
-
 ```
 
 Now in order to be able to access this options object in our theme we must make a change to our theme's `gatbsy-config.js`
 
 ### packages/gatsby-theme-style/gatsby-config.js
 
-```
+```js
 module.exports = themeOptions => ({
   siteMetadata: {
     title: `Gatsby Theme Tutorial`,
@@ -130,7 +128,7 @@ AND
 
 ### packages/gatsby-theme-style/gatsby-ssr.js
 
-```
+```js
 import React from "react";
 import Layout from "./src/components/layout";
 
@@ -153,7 +151,7 @@ Before we do anything else lets add a quick navbar component to our theme so tha
 
 ### packages/gatsby-theme-style/src/components/navbar.js
 
-```
+```js
 import React from "react";
 import { Link } from "gatsby";
 
@@ -176,7 +174,7 @@ export default Navbar;
 
 ### packages/gatsby-theme-style/src/style/navbar.css
 
-```
+```css
 ul {
   list-style-type: none;
   margin: 0;
@@ -206,7 +204,7 @@ Then lets make a few changes to our `Header.css` and add the component to our he
 
 ### packages/gatsby-theme-style/src/style/header.css
 
-```
+```css
 .header {
   margin: -8px;
   // CHANGED
@@ -223,7 +221,7 @@ Then lets make a few changes to our `Header.css` and add the component to our he
 
 ### packages/gatsby-theme-style/src/components/header.js
 
-```
+```js
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import Navbar from "./navbar";
@@ -254,7 +252,6 @@ const Header = () => {
 };
 
 export default Header;
-
 ```
 
 Now when we go to our home page we see the navbar with a link to the home page. This is where things can get a little more complicated.
@@ -267,7 +264,7 @@ Lets add a `navigationPages` object to our options object that will be passed in
 
 ### site/gatsby-config.js
 
-```
+```js
 ...
   plugins: [
     {
@@ -292,7 +289,7 @@ Now in our theme, lets make this object accessible to our siteMetadata object.
 
 ### packages/gatsby-theme-style/gatsby-config.js
 
-```
+```js
 module.exports = themeOptions => ({
   siteMetadata: {
     title: `Gatsby Theme Tutorial`,
@@ -319,7 +316,7 @@ Lets update the static query in our header component, and then pass that data do
 
 ### packages/gatsby-theme-style/src/components/header.js
 
-```
+```js
 ...
   const data = useStaticQuery(graphql`
     query {
@@ -354,7 +351,7 @@ And finally lets access this new data in our navbar component and add the page t
 
 ### packages/gatsby-theme-style/components/navbar.js
 
-```
+```js
 ...
     <nav>
       <ul>
