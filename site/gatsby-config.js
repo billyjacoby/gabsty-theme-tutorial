@@ -7,7 +7,7 @@ module.exports = {
     {
       resolve: "gatsby-theme-style",
       options: {
-        wrapRootElement: true,
+        wrapRootElement: false,
         navigationPages: [
           {
             name: "About",

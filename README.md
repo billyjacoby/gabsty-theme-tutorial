@@ -55,7 +55,7 @@ We're doing this mainly because it's been a while since we've done any work on t
 
 After everything has been updated, lets import our theme as a plugin rather than using the `__experimental` tag that we've been using.
 
-### site/gatsby-config.js
+#### site/gatsby-config.js
 
 ```js
 module.exports = {
@@ -80,7 +80,7 @@ Now if we run `yarn workspace site develop` you should see that our site works t
 
 We can pass any number of options to our theme using the options object from the `gatsby-config.js` of our site. This can be anything from color schemes, to navigation items, and much more. We're going to start by passing an option that tells our theme if we would like our `Layout` component to continue to wrap the root element - what it's currently doing.
 
-### site/gatsby-config.js
+#### site/gatsby-config.js
 
 ```js
 module.exports = {
@@ -101,7 +101,7 @@ module.exports = {
 
 Now in order to be able to access this options object in our theme we must make a change to our theme's `gatbsy-config.js`
 
-### packages/gatsby-theme-style/gatsby-config.js
+#### packages/gatsby-theme-style/gatsby-config.js
 
 ```js
 module.exports = themeOptions => ({
@@ -122,11 +122,11 @@ module.exports = themeOptions => ({
 
 This will enable us to access the `themeOptions` object just about anywhere in our theme to make decisions based on the options passed in. Now lets utilize this object in both our `packages/gatsby-theme-style/gatsby-browser.js` and `packages/gatsby-theme-style/gatsby-ssr.js` files to determine whether or not we should wrap our root element in our theme's styles or not.
 
-### packages/gatsby-theme-style/gatsby-browser.js
+#### packages/gatsby-theme-style/gatsby-browser.js
 
 AND
 
-### packages/gatsby-theme-style/gatsby-ssr.js
+#### packages/gatsby-theme-style/gatsby-ssr.js
 
 ```js
 import React from "react";
@@ -145,11 +145,11 @@ export const wrapPageElement = ({ element, props }, themeOptions) => {
 
 After we make this change we see that our website no longer has any styles applied! Now if we toggle the `wrapRootElement` option to true in our `site/gatsby-config.js` file, we'll see all of our styles get applied again.
 
-**_Please note that you may have to stop and restart your development server for this to take effect_**
+**_Note that you may have to stop and restart your development server for this to take effect_**
 
 Before we do anything else lets add a quick navbar component to our theme so that we can change between pages.
 
-### packages/gatsby-theme-style/src/components/navbar.js
+#### packages/gatsby-theme-style/src/components/navbar.js
 
 ```js
 import React from "react";
@@ -172,7 +172,7 @@ const Navbar = () => {
 export default Navbar;
 ```
 
-### packages/gatsby-theme-style/src/style/navbar.css
+#### packages/gatsby-theme-style/src/style/navbar.css
 
 ```css
 ul {
@@ -202,7 +202,7 @@ li a:hover {
 
 Then lets make a few changes to our `Header.css` and add the component to our header as well.
 
-### packages/gatsby-theme-style/src/style/header.css
+#### packages/gatsby-theme-style/src/style/header.css
 
 ```css
 .header {
@@ -219,7 +219,7 @@ Then lets make a few changes to our `Header.css` and add the component to our he
 ...
 ```
 
-### packages/gatsby-theme-style/src/components/header.js
+#### packages/gatsby-theme-style/src/components/header.js
 
 ```js
 import React from "react";
@@ -262,7 +262,7 @@ We have more than just the home page in our site's pages directory, but how do w
 
 Lets add a `navigationPages` object to our options object that will be passed in to our theme.
 
-### site/gatsby-config.js
+#### site/gatsby-config.js
 
 ```js
 ...
@@ -287,7 +287,7 @@ Lets add a `navigationPages` object to our options object that will be passed in
 
 Now in our theme, lets make this object accessible to our siteMetadata object.
 
-### packages/gatsby-theme-style/gatsby-config.js
+#### packages/gatsby-theme-style/gatsby-config.js
 
 ```js
 module.exports = themeOptions => ({
@@ -314,7 +314,7 @@ I'm not sure if there is a better way, but in order to allow the graphql query t
 
 Lets update the static query in our header component, and then pass that data down to our navbar component.
 
-### packages/gatsby-theme-style/src/components/header.js
+#### packages/gatsby-theme-style/src/components/header.js
 
 ```js
 ...
@@ -349,7 +349,7 @@ Lets update the static query in our header component, and then pass that data do
 
 And finally lets access this new data in our navbar component and add the page to our navbar!
 
-### packages/gatsby-theme-style/components/navbar.js
+#### packages/gatsby-theme-style/components/navbar.js
 
 ```js
 ...
@@ -367,3 +367,62 @@ And finally lets access this new data in our navbar component and add the page t
     </nav>
 ...
 ```
+
+Now we can navigate between all of the pages in our site's directory from our theme's navbar component!
+
+This all works great if we want every page of our site to be styled by our theme, but what if we don't? How would we use the theme's style only on specific pages?
+
+### Export components from our theme to be used in our site
+
+In order to choose to use specific components from our theme, we need to export those components from our theme package. This is done simply from inside our package's `index.js` file.
+
+Currently the only line of code in this file is a comment that reads `//no-op`. All we have to do to allow our site to import components from our theme is add some export statements to this file.
+
+#### packages/gatsby-theme-style/index.js
+
+```js
+export { default as Layout } from "./src/components/layout";
+export { default as Header } from "./src/components/header";
+export { default as Navbar } from "./src/components/navbar";
+```
+
+Now lets change the wrapRootElement option in out `site/gatsby-config.js` file to false so that we can selectively choose which page will be styled with out Layout component.
+
+#### site/gatsby-config.js
+
+```js
+...
+      wrapRootElement: false,
+...
+```
+
+After restarting our development server we will see that our theme's styles are no longer applied to any of our site's pages. Lets manually apply them to our index page.
+
+#### site/src/pages/index.js
+
+```js
+import React from "react";
+import { Layout } from "gatsby-theme-style";
+
+export default () => (
+  <Layout>
+    <h1>Hello World!</h1>
+  </Layout>
+);
+```
+
+Just like that all of the components from our theme are now importable and able to be used by any site that is using them!
+
+### Wrapping Up
+
+So in this part of the tutorial we changed and updated some things on our existing theme to enable our theme to play nicely with other themes that might be composed together to make up a website.
+
+One of the things that makes Gatsby themes so appealing is the ability to compose multiple themes together. Breaking down website functionality into separate themes will allow us, as developers, to simply require a gatsby theme to add all of the functionality of a blog, or a store, or just about anything you can think of.
+
+I'm already using a lot of these features on a regular basis, and I can say for certain that it has drastically improved my development workflow.
+
+### What's Next
+
+In part four of this tutorial we'll begin developing a blog theme to add to our website in order to show how the compose-ability of Gatsby themes can be a game change.
+
+Thanks for reading!
